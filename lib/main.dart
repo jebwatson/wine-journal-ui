@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:wine_journal_ui/features/theme/cubit/theme_picker_cubit.dart';
 import 'package:wine_journal_ui/features/theme/theme.dart';
 import 'package:wine_journal_ui/features/theme/theme_switch.dart';
 import 'package:wine_journal_ui/pallette.dart';
@@ -17,35 +15,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData.from(
-        colorScheme: ColorScheme.fromSwatch(
-          primarySwatch: chardonnay,
-          accentColor: icterine,
-        ),
-        textTheme: const TextTheme(
-          bodyText2: TextStyle(
-            color: Colors.white60,
-          ),
-          headline4: TextStyle(
-            color: Colors.white60,
-          ),
-        ),
-      ),
-      darkTheme: ThemeData.from(
-        colorScheme: ColorScheme.fromSwatch(
-          primarySwatch: burgundy,
-          accentColor: icterine,
-        ),
-        textTheme: const TextTheme(
-          bodyText2: TextStyle(
-            color: Colors.white60,
-          ),
-          headline4: TextStyle(
-            color: Colors.white60,
-          ),
-        ),
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      home: const MyHomePage(title: 'Wine Journal'),
     );
   }
 }
