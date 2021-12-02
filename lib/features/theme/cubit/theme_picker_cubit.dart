@@ -1,21 +1,20 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
-import 'package:wine_journal_ui/features/theme/theme.dart';
 
 part 'theme_picker_state.dart';
 
-class ThemePickerCubit extends Cubit<ThemePickerState> {
-  Map<Type, ThemePickerState> themeMap = {
-    DarkTheme: LightTheme(),
-    LightTheme: DarkTheme(),
+class ThemePickerCubit extends Cubit<ThemeMode> {
+  Map<Type, ThemeMode> themeMap = {
+    DarkTheme: ThemeMode.light,
+    LightTheme: ThemeMode.dark,
   };
 
-  ThemePickerCubit() : super(DarkTheme());
+  ThemePickerCubit() : super(ThemeMode.light);
 
-  ThemePickerCubit.initial(ThemePickerState initialState) : super(initialState);
+  ThemePickerCubit.initial(ThemeMode initialState) : super(initialState);
 
   void toggleTheme() {
-    emit(themeMap[state.runtimeType] ?? LightTheme());
+    emit(themeMap[state.runtimeType] ?? ThemeMode.light);
   }
 }

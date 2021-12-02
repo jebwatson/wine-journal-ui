@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:wine_journal_ui/features/theme/cubit/theme_picker_cubit.dart';
+import 'package:wine_journal_ui/features/theme/theme.dart';
 import 'package:wine_journal_ui/features/theme/theme_switch.dart';
 import 'package:wine_journal_ui/pallette.dart';
 
@@ -13,20 +15,37 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<ThemePickerCubit>(
-            create: (BuildContext context) => ThemePickerCubit()),
-      ],
-      child: BlocBuilder<ThemePickerCubit, ThemePickerState>(
-        builder: (context, state) {
-          return MaterialApp(
-            title: 'Flutter Demo',
-            theme: state.theme,
-            home: const MyHomePage(title: 'Flutter Demo Home Page'),
-          );
-        },
+    return GetMaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData.from(
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: chardonnay,
+          accentColor: icterine,
+        ),
+        textTheme: const TextTheme(
+          bodyText2: TextStyle(
+            color: Colors.white60,
+          ),
+          headline4: TextStyle(
+            color: Colors.white60,
+          ),
+        ),
       ),
+      darkTheme: ThemeData.from(
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: burgundy,
+          accentColor: icterine,
+        ),
+        textTheme: const TextTheme(
+          bodyText2: TextStyle(
+            color: Colors.white60,
+          ),
+          headline4: TextStyle(
+            color: Colors.white60,
+          ),
+        ),
+      ),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -73,8 +92,8 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'New Entry',
-        backgroundColor: secondary,
-        foregroundColor: backgroundLight,
+        backgroundColor: carribeanGreen,
+        foregroundColor: magnolia,
         child: const Icon(Icons.add),
       ),
     );

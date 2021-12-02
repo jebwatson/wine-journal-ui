@@ -1,8 +1,8 @@
 // 800020,45d1ae,7e7f83,f0f465,f7f0f5
 import 'package:flutter/material.dart';
 
-MaterialColor primaryDark = MaterialColor(0xFF800020, burgundy);
-Map<int, Color> burgundy = {
+MaterialColor burgundy = MaterialColor(0xFF800020, burgundySwatch);
+Map<int, Color> burgundySwatch = {
   50: const Color.fromRGBO(128, 0, 32, .1),
   100: const Color.fromRGBO(128, 0, 32, .2),
   200: const Color.fromRGBO(128, 0, 32, .3),
@@ -15,8 +15,8 @@ Map<int, Color> burgundy = {
   900: const Color.fromRGBO(128, 0, 32, 1),
 };
 
-MaterialColor primaryLight = MaterialColor(0xFFEFE9BB, chardonnay);
-Map<int, Color> chardonnay = {
+MaterialColor chardonnay = MaterialColor(0xFFEFE9BB, chardonnaySwatch);
+Map<int, Color> chardonnaySwatch = {
   50: const Color.fromRGBO(239, 233, 187, .1),
   100: const Color.fromRGBO(239, 233, 187, .2),
   200: const Color.fromRGBO(239, 233, 187, .3),
@@ -29,8 +29,8 @@ Map<int, Color> chardonnay = {
   900: const Color.fromRGBO(239, 233, 187, 1),
 };
 
-MaterialColor secondary = MaterialColor(0xFF45d1ae, carribeanGreen);
-Map<int, Color> carribeanGreen = {
+MaterialColor carribeanGreen = MaterialColor(0xFF45d1ae, carribeanGreenSwatch);
+Map<int, Color> carribeanGreenSwatch = {
   50: const Color.fromRGBO(69, 209, 174, .1),
   100: const Color.fromRGBO(69, 209, 174, .2),
   200: const Color.fromRGBO(69, 209, 174, .3),
@@ -43,8 +43,8 @@ Map<int, Color> carribeanGreen = {
   900: const Color.fromRGBO(69, 209, 174, 1),
 };
 
-MaterialColor backgroundDark = MaterialColor(0xFF7e7f83, grayWeb);
-Map<int, Color> grayWeb = {
+MaterialColor grayWeb = MaterialColor(0xFF7e7f83, grayWebSwatch);
+Map<int, Color> grayWebSwatch = {
   50: const Color.fromRGBO(126, 127, 131, .1),
   100: const Color.fromRGBO(126, 127, 131, .2),
   200: const Color.fromRGBO(126, 127, 131, .3),
@@ -57,8 +57,8 @@ Map<int, Color> grayWeb = {
   900: const Color.fromRGBO(126, 127, 131, 1),
 };
 
-MaterialColor accent = MaterialColor(0xFFf0f465, icterine);
-Map<int, Color> icterine = {
+MaterialColor icterine = MaterialColor(0xFFf0f465, icterineSwatch);
+Map<int, Color> icterineSwatch = {
   50: const Color.fromRGBO(240, 244, 101, .1),
   100: const Color.fromRGBO(240, 244, 101, .2),
   200: const Color.fromRGBO(240, 244, 101, .3),
@@ -71,8 +71,8 @@ Map<int, Color> icterine = {
   900: const Color.fromRGBO(240, 244, 101, 1),
 };
 
-MaterialColor backgroundLight = MaterialColor(0xFFf7f0f5, magnolia);
-Map<int, Color> magnolia = {
+MaterialColor magnolia = MaterialColor(0xFFf7f0f5, magnoliaSwatch);
+Map<int, Color> magnoliaSwatch = {
   50: const Color.fromRGBO(247, 240, 245, .1),
   100: const Color.fromRGBO(247, 240, 245, .2),
   200: const Color.fromRGBO(247, 240, 245, .3),

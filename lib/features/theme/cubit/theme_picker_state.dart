@@ -2,16 +2,15 @@ part of 'theme_picker_cubit.dart';
 
 @immutable
 abstract class ThemePickerState {
-  final ThemeData theme;
-  final bool isDarkMode;
+  final ThemeMode themeMode;
 
-  const ThemePickerState(this.theme, this.isDarkMode);
+  const ThemePickerState(this.themeMode);
 }
 
 class DarkTheme extends ThemePickerState {
-  DarkTheme() : super(themeDark, true);
+  const DarkTheme() : super(ThemeMode.dark);
 }
 
 class LightTheme extends ThemePickerState {
-  LightTheme() : super(themeLight, false);
+  const LightTheme() : super(ThemeMode.light);
 }

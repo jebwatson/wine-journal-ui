@@ -4,12 +4,12 @@ import 'package:wine_journal_ui/pallette.dart';
 final ThemeData baseLight = ThemeData.light();
 final ThemeData baseDark = ThemeData.dark();
 
-ThemeData themeDark = baseDark.copyWith(
-  primaryColor: backgroundDark,
-  primaryColorLight: primaryLight,
-  primaryColorDark: primaryDark,
+ThemeData theme = baseDark.copyWith(
+  primaryColor: grayWeb,
+  primaryColorLight: chardonnay,
+  primaryColorDark: burgundy,
 );
 
 ThemeData themeLight = baseLight.copyWith(
-  primaryColor: backgroundLight,
+  primaryColor: magnolia,
 );
