@@ -1,32 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wine_journal_ui/features/theme/cubit/theme_picker_cubit.dart';
 
-class ThemeSwitch extends StatefulWidget {
+class ThemeSwitch extends StatelessWidget {
   const ThemeSwitch({Key? key}) : super(key: key);
 
   @override
-  State<ThemeSwitch> createState() => _ThemeSwitchState();
-}
-
-class _ThemeSwitchState extends State<ThemeSwitch> {
-  bool _isDarkMode = false;
-  Image whiteWine = Image.asset('images/white_wine.png');
-  Image redWine = Image.asset('images/red_wine.png');
-
-  @override
   Widget build(BuildContext context) {
-    return Switch(
-        value: _isDarkMode,
-        activeThumbImage: redWine.image,
-        inactiveThumbImage: whiteWine.image,
-        onChanged: (isDarkMode) {
-          setState(() {
-            _isDarkMode = isDarkMode;
-
-            // Toggle to the opposite value
-            Get.changeThemeMode(_isDarkMode ? ThemeMode.dark : ThemeMode.light);
-          });
-        });
+    return BlocBuilder<ThemePickerCubit, ThemePickerState>(
+      builder: (context, state) {
+        return Switch(
+            value: state.isDarkMode,
+            activeThumbImage: Image.asset('images/red_wine.png').image,
+            inactiveThumbImage: Image.asset('images/white_wine.png').image,
+            onChanged: (isDarkMode) {
+              BlocProvider.of<ThemePickerCubit>(context).toggleTheme();
+            });
+      },
+    );
   }
 }

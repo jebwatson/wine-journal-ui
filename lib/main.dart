@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:wine_journal_ui/features/theme/cubit/theme_picker_cubit.dart';
 import 'package:wine_journal_ui/features/theme/theme.dart';
 import 'package:wine_journal_ui/features/theme/theme_switch.dart';
-import 'package:wine_journal_ui/pallette.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,11 +14,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'Flutter Demo',
-      theme: lightTheme,
-      darkTheme: darkTheme,
-      home: const MyHomePage(title: 'Wine Journal'),
+    return BlocProvider(
+      create: (context) => ThemePickerCubit(),
+      child: GetMaterialApp(
+        title: 'Flutter Demo',
+        theme: lightTheme,
+        darkTheme: darkTheme,
+        home: const MyHomePage(title: 'Wine Journal'),
+      ),
     );
   }
 }
@@ -64,9 +68,11 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'New Entry',
-        backgroundColor: carribeanGreen,
-        foregroundColor: magnolia,
-        child: const Icon(Icons.add),
+        child: BlocBuilder<ThemePickerCubit, ThemePickerState>(
+          builder: (context, state) {
+            return state.image;
+          },
+        ),
       ),
     );
   }
