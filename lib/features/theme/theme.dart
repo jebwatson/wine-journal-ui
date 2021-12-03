@@ -7,6 +7,7 @@ ThemeData darkTheme = ThemeData(
   floatingActionButtonTheme:
       FloatingActionButtonThemeData(backgroundColor: merlot),
   toggleableActiveColor: magnolia,
+  cardColor: burgundy,
   iconTheme: IconThemeData(color: magnolia),
   textTheme: TextTheme(
     bodyText2: TextStyle(color: magnolia),
@@ -19,4 +20,5 @@ ThemeData lightTheme = ThemeData(
   backgroundColor: rose,
   floatingActionButtonTheme:
       FloatingActionButtonThemeData(backgroundColor: rose),
+  cardColor: chardonnay,
 );

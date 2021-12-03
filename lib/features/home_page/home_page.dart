@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +11,11 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _cardList = [
+      Icon(Icons.one_k),
+      Icon(Icons.two_k),
+      Icon(Icons.three_k)
+    ];
     return Material(
       color: Theme.of(context).backgroundColor,
       child: Stack(
@@ -26,18 +32,9 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          // Theme switch
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.08,
-            left: MediaQuery.of(context).size.width * 0.80,
-            child: Transform.scale(
-              scale: 1.5,
-              child: const ThemeSwitch(),
-            ),
-          ),
           // Bottom Card
           Positioned(
-            top: MediaQuery.of(context).size.height * .55,
+            top: MediaQuery.of(context).size.height * .60,
             child: BlocBuilder<ThemePickerCubit, ThemePickerState>(
               builder: (context, state) {
                 return Container(
@@ -75,7 +72,7 @@ class HomePage extends StatelessWidget {
           // Tab View
           Positioned(
             left: MediaQuery.of(context).size.width * .05,
-            top: MediaQuery.of(context).size.height * .56,
+            top: MediaQuery.of(context).size.height * .61,
             child: DefaultTabController(
               length: 4,
               child: SizedBox(
@@ -112,6 +109,58 @@ class HomePage extends StatelessWidget {
             ),
           ),
           // Carousel
+          Positioned(
+            top: MediaQuery.of(context).size.height * 0.14,
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height * 0.44,
+              width: MediaQuery.of(context).size.width,
+              child: CarouselSlider(
+                items: _cardList.map((card) {
+                  return Builder(builder: (context) {
+                    return Padding(
+                      padding: const EdgeInsets.all(18.0),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.6,
+                        decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(20)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withAlpha(40),
+                              spreadRadius: 0.8,
+                              blurRadius: 10,
+                              offset: const Offset(10, 10),
+                            ),
+                          ],
+                        ),
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15.0)),
+                          color: Theme.of(context).cardColor,
+                          child: card,
+                        ),
+                      ),
+                    );
+                  });
+                }).toList(),
+                options: CarouselOptions(
+                  disableCenter: true,
+                  viewportFraction: 0.7,
+                  pageSnapping: false,
+                  enlargeCenterPage: true,
+                ),
+              ),
+            ),
+          ),
+          // Theme switch
+          Positioned(
+            top: MediaQuery.of(context).size.height * 0.08,
+            left: MediaQuery.of(context).size.width * 0.80,
+            child: Transform.scale(
+              scale: 1.5,
+              child: const ThemeSwitch(),
+            ),
+          ),
         ],
       ),
     );
