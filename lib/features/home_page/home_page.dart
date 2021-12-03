@@ -16,6 +16,7 @@ class HomePage extends StatelessWidget {
       Icon(Icons.two_k),
       Icon(Icons.three_k)
     ];
+
     return Material(
       color: Theme.of(context).backgroundColor,
       child: Stack(
