@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:wine_journal_ui/pallette.dart';
 
 ThemeData darkTheme = ThemeData(
-  primarySwatch: burgundy,
-  backgroundColor: burgundy.shade400,
+  primarySwatch: merlot,
+  backgroundColor: merlot,
+  floatingActionButtonTheme:
+      FloatingActionButtonThemeData(backgroundColor: merlot),
   toggleableActiveColor: magnolia,
   iconTheme: IconThemeData(color: magnolia),
   textTheme: TextTheme(
@@ -13,6 +15,8 @@ ThemeData darkTheme = ThemeData(
 );
 
 ThemeData lightTheme = ThemeData(
-  primarySwatch: chardonnay,
-  backgroundColor: chardonnay.shade600,
+  primarySwatch: rose,
+  backgroundColor: rose,
+  floatingActionButtonTheme:
+      FloatingActionButtonThemeData(backgroundColor: rose),
 );

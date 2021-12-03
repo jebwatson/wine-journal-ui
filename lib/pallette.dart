@@ -29,6 +29,34 @@ Map<int, Color> chardonnaySwatch = {
   900: const Color.fromRGBO(239, 233, 187, 1),
 };
 
+MaterialColor rose = MaterialColor(0xFFFAC2BF, roseSwatch);
+Map<int, Color> roseSwatch = {
+  50: const Color.fromRGBO(250, 194, 191, .1),
+  100: const Color.fromRGBO(250, 194, 191, .2),
+  200: const Color.fromRGBO(250, 194, 191, .3),
+  300: const Color.fromRGBO(250, 194, 191, .4),
+  400: const Color.fromRGBO(250, 194, 191, .5),
+  500: const Color.fromRGBO(250, 194, 191, .6),
+  600: const Color.fromRGBO(250, 194, 191, .7),
+  700: const Color.fromRGBO(250, 194, 191, .8),
+  800: const Color.fromRGBO(250, 194, 191, .9),
+  900: const Color.fromRGBO(250, 194, 191, 1),
+};
+
+MaterialColor merlot = MaterialColor(0xFFA65F5F, merlotSwatch);
+Map<int, Color> merlotSwatch = {
+  50: const Color.fromRGBO(166, 95, 95, .1),
+  100: const Color.fromRGBO(166, 95, 95, .2),
+  200: const Color.fromRGBO(166, 95, 95, .3),
+  300: const Color.fromRGBO(166, 95, 95, .4),
+  400: const Color.fromRGBO(166, 95, 95, .5),
+  500: const Color.fromRGBO(166, 95, 95, .6),
+  600: const Color.fromRGBO(166, 95, 95, .7),
+  700: const Color.fromRGBO(166, 95, 95, .8),
+  800: const Color.fromRGBO(166, 95, 95, .9),
+  900: const Color.fromRGBO(166, 95, 95, 1),
+};
+
 MaterialColor carribeanGreen = MaterialColor(0xFF45d1ae, carribeanGreenSwatch);
 Map<int, Color> carribeanGreenSwatch = {
   50: const Color.fromRGBO(69, 209, 174, .1),
