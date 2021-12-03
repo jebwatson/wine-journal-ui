@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: lightTheme,
         darkTheme: darkTheme,
+        themeMode: ThemeMode.light,
         home: const MyHomePage(title: 'Wine Journal'),
       ),
     );
