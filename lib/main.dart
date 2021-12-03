@@ -17,11 +17,11 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => ThemePickerCubit(),
       child: GetMaterialApp(
-        title: 'Flutter Demo',
+        title: 'Watson Wine Journal',
         theme: lightTheme,
         darkTheme: darkTheme,
         themeMode: ThemeMode.light,
-        home: const MyHomePage(title: 'Wine Journal'),
+        home: const MyHomePage(title: 'Watson Wine Journal'),
       ),
     );
   }
