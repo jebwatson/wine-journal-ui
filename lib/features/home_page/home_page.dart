@@ -1,14 +1,20 @@
+import 'package:bottom_drawer/bottom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wine_journal_ui/features/entries_carousel/entries_carousel.dart';
 import 'package:wine_journal_ui/features/entries_tab_view/entries_tab_view.dart';
 import 'package:wine_journal_ui/features/home_page/bottom_card.dart';
 import 'package:wine_journal_ui/features/menu/hamburger_menu.dart';
+import 'package:wine_journal_ui/features/new_entry/cubit/new_entry_visibility_cubit.dart';
 import 'package:wine_journal_ui/features/new_entry/new_entry_button.dart';
+import 'package:wine_journal_ui/features/new_entry/new_entry_drawer.dart';
 import 'package:wine_journal_ui/features/theme/theme_switch.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
+
+  final _drawerController = BottomDrawerController();
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +22,24 @@ class HomePage extends StatelessWidget {
       color: Theme.of(context).backgroundColor,
       child: Stack(
         children: [
-          _positionMenuButton(context),
           _positionBottomCard(context),
           _positionTabView(context),
-          _positionActionButton(),
           _positionCarousel(context),
+          _positionActionButton(),
+          _positionMenuButton(context),
           _positionThemeSwitch(context),
+          _positionNewEntryDrawer(),
         ],
       ),
+    );
+  }
+
+  Widget _positionNewEntryDrawer() {
+    return BlocListener<NewEntryVisibilityCubit, bool>(
+      listener: (context, state) {
+        state ? _drawerController.open() : _drawerController.close();
+      },
+      child: NewEntryDrawer(_drawerController),
     );
   }
 
