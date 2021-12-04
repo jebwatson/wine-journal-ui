@@ -18,10 +18,10 @@ class EntriesTabView extends StatelessWidget {
               indicatorSize: TabBarIndicatorSize.label,
               indicatorWeight: 4,
               tabs: [
-                Tab(text: 'Recents'),
-                Tab(text: 'Favorites'),
-                Tab(text: 'Varieties'),
-                Tab(text: 'Origin'),
+                Tab(child: Text('Recents')),
+                Tab(child: Text('Favorites')),
+                Tab(child: Text('Varieties')),
+                Tab(child: Text('Origin')),
               ],
             ),
             SizedBox(

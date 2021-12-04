@@ -18,8 +18,8 @@ class HomePage extends StatelessWidget {
         children: [
           _positionMenuButton(context),
           _positionBottomCard(context),
-          _positionActionButton(),
           _positionTabView(context),
+          _positionActionButton(),
           _positionCarousel(context),
           _positionThemeSwitch(context),
         ],
