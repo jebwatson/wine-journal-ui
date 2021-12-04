@@ -32,51 +32,58 @@ class NewEntryDrawer extends StatelessWidget {
           color: Colors.transparent,
           child: Stack(
             children: [
-              Positioned(
-                bottom: 0,
-                child: Container(
-                  padding: const EdgeInsets.only(top: 20),
-                  height: MediaQuery.of(context).size.height * 0.84,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    color: state.isDarkMode ? burgundy : chardonnay,
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(32),
-                      topRight: Radius.circular(32),
-                    ),
-                  ),
-                  child: StaggeredGridView.countBuilder(
-                    crossAxisCount: 4,
-                    itemCount: 8,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        color: state.isDarkMode ? merlot : rose,
-                        child: Center(
-                          child: Text('$index'),
-                        ),
-                      );
-                    },
-                    staggeredTileBuilder: (int index) =>
-                        StaggeredTile.count(2, index.isEven ? 2 : 1),
-                    mainAxisSpacing: 4.0,
-                    crossAxisSpacing: 4.0,
-                  ),
-                ),
-              ),
-              Positioned(
-                top: MediaQuery.of(context).size.height * 0.01,
-                right: MediaQuery.of(context).size.width * 0.02,
-                child: IconButton(
-                  icon: const Icon(Icons.close),
-                  onPressed: () =>
-                      BlocProvider.of<NewEntryVisibilityCubit>(context)
-                          .closeDrawer(),
-                ),
-              ),
+              _positionContent(context, state),
+              _positionCloseButton(context),
             ],
           ),
         );
       },
+    );
+  }
+
+  Positioned _positionCloseButton(BuildContext context) {
+    return Positioned(
+      top: MediaQuery.of(context).size.height * 0.01,
+      right: MediaQuery.of(context).size.width * 0.02,
+      child: IconButton(
+        icon: const Icon(Icons.close),
+        onPressed: () =>
+            BlocProvider.of<NewEntryVisibilityCubit>(context).closeDrawer(),
+      ),
+    );
+  }
+
+  Positioned _positionContent(BuildContext context, ThemePickerState state) {
+    return Positioned(
+      bottom: 0,
+      child: Container(
+        padding: const EdgeInsets.only(top: 20),
+        height: MediaQuery.of(context).size.height * 0.84,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          color: state.isDarkMode ? burgundy : chardonnay,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(32),
+            topRight: Radius.circular(32),
+          ),
+        ),
+        child: StaggeredGridView.countBuilder(
+          crossAxisCount: 4,
+          itemCount: 8,
+          itemBuilder: (BuildContext context, int index) {
+            return Container(
+              color: state.isDarkMode ? merlot : rose,
+              child: Center(
+                child: Text('$index'),
+              ),
+            );
+          },
+          staggeredTileBuilder: (int index) =>
+              StaggeredTile.count(2, index.isEven ? 2 : 1),
+          mainAxisSpacing: 4.0,
+          crossAxisSpacing: 4.0,
+        ),
+      ),
     );
   }
 }
