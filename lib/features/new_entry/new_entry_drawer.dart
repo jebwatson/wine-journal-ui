@@ -30,8 +30,9 @@ class NewEntryDrawer extends StatelessWidget {
           color: Colors.transparent,
           child: Stack(
             children: [
-              _positionContent(context, state),
+              _positionBackground(context, state),
               _positionCloseButton(context),
+              _positionContent(context, state),
             ],
           ),
         );
@@ -39,17 +40,7 @@ class NewEntryDrawer extends StatelessWidget {
     );
   }
 
-  Positioned _positionCloseButton(BuildContext context) {
-    return Positioned(
-      top: MediaQuery.of(context).size.height * 0.01,
-      right: MediaQuery.of(context).size.width * 0.02,
-      child: IconButton(
-          icon: const Icon(Icons.close),
-          onPressed: () => _drawerController.close()),
-    );
-  }
-
-  Positioned _positionContent(BuildContext context, ThemePickerState state) {
+  Positioned _positionBackground(BuildContext context, ThemePickerState state) {
     return Positioned(
       bottom: 0,
       child: Container(
@@ -63,43 +54,99 @@ class NewEntryDrawer extends StatelessWidget {
             topRight: Radius.circular(32),
           ),
         ),
+      ),
+    );
+  }
+
+  Positioned _positionCloseButton(BuildContext context) {
+    return Positioned(
+      top: MediaQuery.of(context).size.height * 0.01,
+      right: MediaQuery.of(context).size.width * 0.02,
+      child: IconButton(
+          icon: const Icon(Icons.close),
+          onPressed: () => _drawerController.close()),
+    );
+  }
+
+  // Might consider making this a wizard to break content up across a few pages
+  // Could try A/B testing to get a feel for it
+  Widget _positionContent(BuildContext context, ThemePickerState state) {
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 30.0),
         child: SingleChildScrollView(
           child: Wrap(
+            alignment: WrapAlignment.center,
             spacing: 20,
-            children: [
-              Container(
-                height: MediaQuery.of(context).size.width * 0.3,
-                width: MediaQuery.of(context).size.width * 0.3,
-                decoration: BoxDecoration(
-                  color: state.isDarkMode ? merlot : rose,
-                  borderRadius: const BorderRadius.all(Radius.circular(32)),
-                ),
-                child: IconButton(
-                  iconSize: 48,
-                  onPressed: () {
-                    print('Camera button press');
-                  },
-                  icon: const Icon(Icons.camera_alt),
+            runSpacing: 20,
+            children: const [
+              NewEntryField('Wine Name'),
+              NewEntryField('Producer'),
+              NewEntryField('Vintage'),
+              Padding(
+                padding: EdgeInsets.only(top: 14.0),
+                child: Divider(
+                  thickness: 2,
+                  indent: 10,
+                  endIndent: 10,
                 ),
               ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.5,
-                child: TextFormField(
-                  initialValue: 'Wine Name',
+              NewEntryField('Purchase Price'),
+              NewEntryField('Purchase Location'),
+              Padding(
+                padding: EdgeInsets.only(top: 14.0),
+                child: Divider(
+                  thickness: 2,
+                  indent: 10,
+                  endIndent: 10,
                 ),
               ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.5,
-                child: TextFormField(
-                  initialValue: 'Producer',
+              NewEntryField('Variety'),
+              NewEntryField('Origin'),
+              NewEntryField('Grape Varieties'),
+              Padding(
+                padding: EdgeInsets.only(top: 14.0),
+                child: Divider(
+                  thickness: 2,
+                  indent: 10,
+                  endIndent: 10,
                 ),
               ),
-              TextFormField(
-                initialValue: 'Producer',
+              NewEntryField('Appearance'),
+              NewEntryField('Bouquette'),
+              NewEntryField('Pallette'),
+              Padding(
+                padding: EdgeInsets.only(top: 14.0),
+                child: Divider(
+                  thickness: 2,
+                  indent: 10,
+                  endIndent: 10,
+                ),
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class NewEntryField extends StatelessWidget {
+  const NewEntryField(
+    this._hintText, {
+    Key? key,
+  }) : super(key: key);
+
+  final String _hintText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      width: MediaQuery.of(context).size.width * 0.90,
+      child: TextField(
+        decoration: InputDecoration(hintText: _hintText),
       ),
     );
   }
