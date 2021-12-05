@@ -31,8 +31,8 @@ class NewEntryDrawer extends StatelessWidget {
           child: Stack(
             children: [
               _positionBackground(context, state),
-              _positionCloseButton(context),
               _positionContent(context, state),
+              _positionCloseButton(context),
             ],
           ),
         );
