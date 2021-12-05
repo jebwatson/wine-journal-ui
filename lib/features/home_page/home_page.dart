@@ -1,12 +1,10 @@
 import 'package:bottom_drawer/bottom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wine_journal_ui/features/entries_carousel/entries_carousel.dart';
 import 'package:wine_journal_ui/features/entries_tab_view/entries_tab_view.dart';
 import 'package:wine_journal_ui/features/home_page/bottom_card.dart';
 import 'package:wine_journal_ui/features/menu/hamburger_menu.dart';
-import 'package:wine_journal_ui/features/new_entry/cubit/new_entry_visibility_cubit.dart';
 import 'package:wine_journal_ui/features/new_entry/new_entry_button.dart';
 import 'package:wine_journal_ui/features/new_entry/new_entry_drawer.dart';
 import 'package:wine_journal_ui/features/theme/theme_switch.dart';
@@ -35,12 +33,7 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _positionNewEntryDrawer() {
-    return BlocListener<NewEntryVisibilityCubit, bool>(
-      listener: (context, state) {
-        state ? _drawerController.open() : _drawerController.close();
-      },
-      child: NewEntryDrawer(_drawerController),
-    );
+    return NewEntryDrawer(_drawerController);
   }
 
   Positioned _positionMenuButton(BuildContext context) {
@@ -59,11 +52,11 @@ class HomePage extends StatelessWidget {
   }
 
   Padding _positionActionButton() {
-    return const Padding(
-      padding: EdgeInsets.all(26.0),
+    return Padding(
+      padding: const EdgeInsets.all(26.0),
       child: Align(
         alignment: Alignment.bottomRight,
-        child: NewEntryButton(),
+        child: NewEntryButton(_drawerController),
       ),
     );
   }
