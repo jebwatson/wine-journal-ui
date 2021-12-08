@@ -1,5 +1,6 @@
 import 'package:bottom_drawer/bottom_drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wine_journal_ui/features/theme/cubit/theme_picker_cubit.dart';
@@ -82,51 +83,54 @@ class NewEntryDrawer extends StatelessWidget {
             runSpacing: 20,
             children: const [
               NewEntryField('Wine Name'),
-              NewEntryField('Producer'),
-              NewEntryField('Vintage'),
-              Padding(
-                padding: EdgeInsets.only(top: 14.0),
-                child: Divider(
-                  thickness: 2,
-                  indent: 10,
-                  endIndent: 10,
-                ),
+              NewEntryField(
+                'Purchase Price',
+                inputType: TextInputType.number,
               ),
-              NewEntryField('Purchase Price'),
               NewEntryField('Purchase Location'),
-              Padding(
-                padding: EdgeInsets.only(top: 14.0),
-                child: Divider(
-                  thickness: 2,
-                  indent: 10,
-                  endIndent: 10,
-                ),
+              _NewEntryDivider(),
+              NewEntryField('Producer'),
+              NewEntryField(
+                'Vintage',
+                inputType: TextInputType.number,
               ),
+              _NewEntryDivider(),
               NewEntryField('Variety'),
               NewEntryField('Origin'),
               NewEntryField('Grape Varieties'),
-              Padding(
-                padding: EdgeInsets.only(top: 14.0),
-                child: Divider(
-                  thickness: 2,
-                  indent: 10,
-                  endIndent: 10,
-                ),
-              ),
+              _NewEntryDivider(),
               NewEntryField('Appearance'),
               NewEntryField('Bouquette'),
               NewEntryField('Pallette'),
-              Padding(
-                padding: EdgeInsets.only(top: 14.0),
-                child: Divider(
-                  thickness: 2,
-                  indent: 10,
-                  endIndent: 10,
-                ),
-              ),
+              _NewEntryDivider(),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _NewEntryDivider extends StatelessWidget {
+  const _NewEntryDivider({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 14.0),
+      child: BlocBuilder<ThemePickerCubit, ThemePickerState>(
+        builder: (context, state) {
+          return Divider(
+            color: state.isDarkMode
+                ? magnolia.withOpacity(0.3)
+                : Colors.black.withOpacity(0.3),
+            thickness: 2,
+            indent: 10,
+            endIndent: 10,
+          );
+        },
       ),
     );
   }
@@ -136,9 +140,12 @@ class NewEntryField extends StatelessWidget {
   const NewEntryField(
     this._hintText, {
     Key? key,
-  }) : super(key: key);
+    TextInputType inputType = TextInputType.text,
+  })  : _inputType = inputType,
+        super(key: key);
 
   final String _hintText;
+  final TextInputType _inputType;
 
   @override
   Widget build(BuildContext context) {
@@ -148,6 +155,9 @@ class NewEntryField extends StatelessWidget {
       child: BlocBuilder<ThemePickerCubit, ThemePickerState>(
         builder: (context, state) {
           return TextField(
+            minLines: 1,
+            maxLines: 20,
+            keyboardType: _inputType,
             decoration: InputDecoration(
               hintText: _hintText,
               hintStyle:
