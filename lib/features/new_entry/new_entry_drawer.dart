@@ -145,8 +145,20 @@ class NewEntryField extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       width: MediaQuery.of(context).size.width * 0.90,
-      child: TextField(
-        decoration: InputDecoration(hintText: _hintText),
+      child: BlocBuilder<ThemePickerCubit, ThemePickerState>(
+        builder: (context, state) {
+          return TextField(
+            decoration: InputDecoration(
+              hintText: _hintText,
+              hintStyle:
+                  TextStyle(color: state.isDarkMode ? magnolia : Colors.black),
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                    color: state.isDarkMode ? magnolia : Colors.black),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
