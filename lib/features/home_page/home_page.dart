@@ -1,6 +1,5 @@
 import 'package:bottom_drawer/bottom_drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:wine_journal_ui/features/entries_carousel/entries_carousel.dart';
 import 'package:wine_journal_ui/features/entries_tab_view/entries_tab_view.dart';
 import 'package:wine_journal_ui/features/home_page/bottom_card.dart';
