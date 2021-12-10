@@ -100,16 +100,46 @@ class NewEntryDrawer extends StatelessWidget {
               NewEntryField('Origin'),
               NewEntryField('Grape Varieties'),
               _NewEntryDivider(),
+              _GroupHeader('Appearance'),
               NewEntryField('Appearance'),
               _StandardRatingBar(),
+              _NewEntryDivider(),
+              _GroupHeader('Bouquette'),
               NewEntryField('Bouquette'),
               _StandardRatingBar(),
+              _NewEntryDivider(),
+              _GroupHeader('Pallette'),
               NewEntryField('Pallette'),
               _StandardRatingBar(),
               _NewEntryDivider(),
-              Padding(padding: EdgeInsets.only(bottom: 200))
+              NewEntryField('Final Thoughts'),
+              _NewEntryDivider(),
+              Padding(padding: EdgeInsets.only(bottom: 200)),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _GroupHeader extends StatelessWidget {
+  const _GroupHeader(
+    this._text, {
+    Key? key,
+  }) : super(key: key);
+
+  final String _text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.topLeft,
+      child: Padding(
+        padding: EdgeInsets.only(left: 30.0),
+        child: Text(
+          _text,
+          style: const TextStyle(fontSize: 24),
         ),
       ),
     );
@@ -124,6 +154,7 @@ class _StandardRatingBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RatingBar.builder(
+      itemSize: 55,
       allowHalfRating: true,
       itemBuilder: (context, _) => const Icon(
         Icons.star,
