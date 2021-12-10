@@ -93,6 +93,7 @@ class NewEntryDrawer extends StatelessWidget {
             spacing: 20,
             runSpacing: 20,
             children: const [
+              _NewEntryHeader(),
               NewEntryField('Wine Name'),
               NewEntryField(
                 'Purchase Price',
@@ -127,6 +128,26 @@ class NewEntryDrawer extends StatelessWidget {
               Padding(padding: EdgeInsets.only(bottom: 200)),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _NewEntryHeader extends StatelessWidget {
+  const _NewEntryHeader({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.topLeft,
+      child: Padding(
+        padding: EdgeInsets.only(left: 30),
+        child: Text(
+          'New Entry',
+          style: TextStyle(fontSize: 24),
         ),
       ),
     );
