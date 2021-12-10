@@ -9,9 +9,9 @@ class EntriesCarousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _cardList = [
-      Icon(Icons.one_k),
-      Icon(Icons.two_k),
-      Icon(Icons.three_k)
+      const Icon(Icons.one_k),
+      const Icon(Icons.two_k),
+      const Icon(Icons.three_k)
     ];
 
     return SizedBox(

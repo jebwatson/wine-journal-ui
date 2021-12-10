@@ -136,7 +136,7 @@ class _GroupHeader extends StatelessWidget {
     return Align(
       alignment: Alignment.topLeft,
       child: Padding(
-        padding: EdgeInsets.only(left: 30.0),
+        padding: const EdgeInsets.only(left: 30.0),
         child: Text(
           _text,
           style: const TextStyle(fontSize: 24),
@@ -160,9 +160,7 @@ class _StandardRatingBar extends StatelessWidget {
         Icons.star,
         color: Colors.amber,
       ),
-      onRatingUpdate: (rating) {
-        print(rating);
-      },
+      onRatingUpdate: (rating) {},
     );
   }
 }
