@@ -2,6 +2,7 @@ import 'package:bottom_drawer/bottom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:wine_journal_ui/features/new_entry/new_entry_button.dart';
 import 'package:wine_journal_ui/features/theme/cubit/theme_picker_cubit.dart';
 import 'package:wine_journal_ui/pallette.dart';
 
@@ -33,10 +34,21 @@ class NewEntryDrawer extends StatelessWidget {
               _positionBackground(context, state),
               _positionContent(context, state),
               _positionCloseButton(context),
+              _positionCameraButton(context, state),
             ],
           ),
         );
       },
+    );
+  }
+
+  Widget _positionCameraButton(BuildContext context, ThemePickerState state) {
+    return Padding(
+      padding: const EdgeInsets.all(26.0),
+      child: Align(
+        alignment: Alignment.bottomRight,
+        child: NewEntryButton(() => print('camera button pressed')),
+      ),
     );
   }
 

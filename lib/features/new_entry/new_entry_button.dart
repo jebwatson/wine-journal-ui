@@ -1,13 +1,12 @@
-import 'package:bottom_drawer/bottom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wine_journal_ui/features/theme/cubit/theme_picker_cubit.dart';
 import 'package:wine_journal_ui/pallette.dart';
 
 class NewEntryButton extends StatelessWidget {
-  const NewEntryButton(this._drawerController, {Key? key}) : super(key: key);
+  const NewEntryButton(this._buttonAction, {Key? key}) : super(key: key);
 
-  final BottomDrawerController _drawerController;
+  final Function() _buttonAction;
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +28,8 @@ class NewEntryButton extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           height: MediaQuery.of(context).size.width * 0.2,
           width: MediaQuery.of(context).size.width * 0.2,
-          child: IconButton(
-              icon: state.image, onPressed: () => _drawerController.open()),
+          child:
+              IconButton(icon: state.image, onPressed: () => _buttonAction()),
         );
       },
     );

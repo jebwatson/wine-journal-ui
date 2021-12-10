@@ -55,7 +55,7 @@ class HomePage extends StatelessWidget {
       padding: const EdgeInsets.all(26.0),
       child: Align(
         alignment: Alignment.bottomRight,
-        child: NewEntryButton(_drawerController),
+        child: NewEntryButton(_drawerController.open),
       ),
     );
   }
