@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:wine_journal_ui/features/theme/cubit/theme_picker_cubit.dart';
 import 'package:wine_journal_ui/pallette.dart';
 
@@ -100,13 +101,37 @@ class NewEntryDrawer extends StatelessWidget {
               NewEntryField('Grape Varieties'),
               _NewEntryDivider(),
               NewEntryField('Appearance'),
+              _StandardRatingBar(),
               NewEntryField('Bouquette'),
+              _StandardRatingBar(),
               NewEntryField('Pallette'),
+              _StandardRatingBar(),
               _NewEntryDivider(),
+              Padding(padding: EdgeInsets.only(bottom: 200))
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class _StandardRatingBar extends StatelessWidget {
+  const _StandardRatingBar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return RatingBar.builder(
+      allowHalfRating: true,
+      itemBuilder: (context, _) => const Icon(
+        Icons.star,
+        color: Colors.amber,
+      ),
+      onRatingUpdate: (rating) {
+        print(rating);
+      },
     );
   }
 }
